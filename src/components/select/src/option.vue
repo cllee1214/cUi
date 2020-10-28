@@ -12,8 +12,11 @@ export default {
         label: String,
         value: String
     },
-    setup() {
+    setup(props) {
         const selectModel = inject('selectModel')
+        if(props.value === selectModel.value) {
+            selectModel.label = props.label
+        }
         return {
             selectModel
         }
