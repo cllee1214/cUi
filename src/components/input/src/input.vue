@@ -1,6 +1,6 @@
 <template>
     <div class="c-input">
-        <input :disabled='isDisabled'  :class="classes" v-model="value" :type="currentType" :placeholder="placeholder">
+        <input :disabled='isDisabled' :readonly="readonly"  :class="classes" v-model="value" :type="currentType" :placeholder="placeholder">
         
         <!-- 显示密码 -->
         <span class="c-input-password-view" v-if="isShowPwdBtn" @click="viewPassword">
@@ -8,7 +8,7 @@
         </span>
 
         <!-- 清空 -->
-        <span class="c-input-clear" v-if="modelValue.length && clearable" @click="clearContent">
+        <span class="c-input-clear" v-if="modelValue && modelValue.length && clearable" @click="clearContent">
              <i class="c-icon-circle-close"></i>
         </span>
 
@@ -35,6 +35,7 @@ export default {
         placeholder: String,
         disabled: Boolean,
         clearable: Boolean,
+        readonly: Boolean,
         'show-password': Boolean,
         'prefix-icon': String,
         'suffix-icon': String

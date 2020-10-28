@@ -2,10 +2,14 @@
 import Button from './button'
 import Radio from './radio'
 import Input from './input'
+import {Select, Option} from './select'
+
 const components = {
     Button,
     Radio,
-    Input
+    Input,
+    Select,
+    Option
 }
 
 const install = function(app, options) {

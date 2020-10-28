@@ -24,11 +24,18 @@
     <c-input v-model="input" placeholder='请输入密码' type='text' prefix-icon='c-icon-date' clearable></c-input>
   </div>
 
+  <div style="width: 130px">
+    <c-select v-model="select">
+      <c-option v-for="item in options" :key="item.label" :label='item.label' :value='item.value'></c-option>
+    </c-select>
+  </div>
+
+<div></div>
 </template>
 
 <script>
 import './assets/icon.css'
-import {ref, watch, watchEffect} from 'vue'
+import {ref, watch, watchEffect, reactive} from 'vue'
 export default {
   name: 'App',
   setup() {
@@ -36,14 +43,32 @@ export default {
     const r2 = ref(2)
     const input = ref('6666')
 
+    const select = ref('2')
+    const options = reactive([
+      {
+        value:'1',
+        label: '选项一'
+      },
+       {
+        value:'2',
+        label: '选项二'
+      },
+       {
+        value:'3',
+        label: '选项三'
+      }
+    ])
 
     watchEffect(() => {
       console.log(input.value)
+      console.log(select.value)
     })
     return {
       radio,
       r2,
-      input
+      input,
+      options,
+      select
     }
   },
   methods: {
